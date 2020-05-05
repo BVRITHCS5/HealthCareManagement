@@ -13,16 +13,21 @@ import javax.validation.constraints.Size;
 public class DiagnosticCenterBean {
 	
 	 public  DiagnosticCenterBean() {
-			super();
-		}
+			
+	}
 	 
-		/*
-		 * public DiagnosticCenterBean(int center_id, String center_name, String
-		 * center_location, String test_1,String test,String test_3) { super();
-		 * this.center_id = center_id; this.center_name=center_name;
-		 * this.center_location=center_location; this.test_1=test_1; this.test=test;
-		 * this.test_3=test_3; }
-		 */
+		
+		public DiagnosticCenterBean(int center_id, String center_name, String center_location, String test_1,
+				String test, String test_3) {
+			super();
+			this.center_id = center_id;
+			this.center_name = center_name;
+			this.center_location = center_location;
+			this.test_1 = test_1;
+			this.test = test;
+			this.test_3 = test_3;
+		}
+		 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int center_id;
