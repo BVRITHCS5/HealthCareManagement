@@ -68,9 +68,9 @@ public class HealthCareRestController {
 		  hcsi.deleteCenter(center_id);
 		 ResponseEntity<Boolean> responseEntity = new ResponseEntity(true, HttpStatus.OK);
 			
-			 if (center_id == 0) { 
-				 throw new HealthCareException("Invalid id");
-				 } 
+			/*
+			 * if (center_id == 0) { throw new HealthCareException("Invalid id"); }
+			 */
 			 
 		 System.out.println("response entity=" + responseEntity);
 			return responseEntity;
