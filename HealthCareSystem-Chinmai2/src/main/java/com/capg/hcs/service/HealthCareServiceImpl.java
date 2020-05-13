@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.capg.hcs.dao.IHealthCareDao;
 import com.capg.hcs.entity.DiagnosticCenterBean;
 
+/* @Author Chinmaye*/
 @Service
 public class HealthCareServiceImpl implements IHealthCareService {
 	

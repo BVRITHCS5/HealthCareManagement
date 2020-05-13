@@ -8,6 +8,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+/*@Author Chinmaye*/
 @Entity
 @Table(name="Health_Spring")
 public class DiagnosticCenterBean {

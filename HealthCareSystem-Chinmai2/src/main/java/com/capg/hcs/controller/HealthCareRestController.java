@@ -19,6 +19,7 @@ import com.capg.hcs.entity.DiagnosticCenterBean;
 import com.capg.hcs.exception.HealthCareException;
 import com.capg.hcs.service.HealthCareServiceImpl;
 
+/*@Author Chinmaye*/
 
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -27,14 +28,16 @@ import com.capg.hcs.service.HealthCareServiceImpl;
 public class HealthCareRestController {
 	
 	@Autowired
-	HealthCareServiceImpl hcsi;
+	HealthCareServiceImpl healthCareSystemImpl;
 	
-	  //http://localhost:8098/healthcare/add
-		// POSTMAN (Post : body{ "center_name": "Apolo","center_location":"Kompally" "test_1":"blood Pressure","test":"Blood Sugar", "test_3": "Blood Group"}
-		//dont insert id ,  id is  :@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	 @PostMapping(value="/add")
+	/*
+	 * http:localhost:8098/healthcare/add // POSTMAN (Post : body{
+	 * "center_name": "Apolo","center_location":"Kompally"
+	 * "test_1":"blood Pressure","test":"Blood Sugar", "test_3": "Blood Group"}
+	 * dont insert id , id is :@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	 */	 @PostMapping(value="/add")
 	 public ResponseEntity<Boolean> addCenter(@RequestBody DiagnosticCenterBean center) {
-			DiagnosticCenterBean dc = hcsi.addCenter(center);
+			DiagnosticCenterBean diagnosticCenter = healthCareSystemImpl.addCenter(center);
 			ResponseEntity<Boolean> responseEntity = new ResponseEntity(true, HttpStatus.OK);
 			System.out.println("response entity=" + responseEntity);
 			return responseEntity;
@@ -46,26 +49,28 @@ public class HealthCareRestController {
 	 //the details of particular id
 	 @ResponseBody
 	 public DiagnosticCenterBean getCenter(@PathVariable int center_id) throws HealthCareException{
-		 DiagnosticCenterBean dc = hcsi. getCenter( center_id);
-		 if (dc == null) {
+		 DiagnosticCenterBean diagnosticCenter =  healthCareSystemImpl. getCenter( center_id);
+		 if (diagnosticCenter == null) {
 				throw new HealthCareException("Invalid id");
 			}
-		 return dc;
+		 return diagnosticCenter;
 	 }
 	 
 	 
-	 @GetMapping(value="/display")  ////GET:http://localhost:8098/healthcare/display    
-		public ResponseEntity<List<DiagnosticCenterBean>> displayCenter() {
+		@GetMapping(value = "/display")
+		/*
+		 * GET:http://localhost:8098/healthcare/display
+		 */		public ResponseEntity<List<DiagnosticCenterBean>> displayCenter() {
 
-			List<DiagnosticCenterBean> center = hcsi.displaycenter();
+			List<DiagnosticCenterBean> center =  healthCareSystemImpl.displaycenter();
 		  return new ResponseEntity<List<DiagnosticCenterBean>>(center,new HttpHeaders(),HttpStatus.OK);
 		}
 
-	 @DeleteMapping(value="/deleteCenter/{center_id}")////Delete:http://localhost:8098/healthcare/deleteCenter/3 
+	 @DeleteMapping(value="/deleteCenter/{center_id}")//Delete:http://localhost:8098/healthcare/deleteCenter/3 
 	 // the details with center id particularly will be deleted
 	  public  ResponseEntity<Boolean>  deleteCenter(@PathVariable int center_id) throws HealthCareException 
 	  {
-		  hcsi.deleteCenter(center_id);
+		 healthCareSystemImpl.deleteCenter(center_id);
 		 ResponseEntity<Boolean> responseEntity = new ResponseEntity(true, HttpStatus.OK);
 			
 			/*

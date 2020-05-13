@@ -12,16 +12,17 @@ import org.springframework.stereotype.Repository;
 
 import com.capg.hcs.entity.DiagnosticCenterBean;
 
+/*@Author Chinmaye*/
 @Repository
 @Transactional
 public class HealthCareDaoImpl implements IHealthCareDao {
 	
 	@PersistenceContext
-	EntityManager em;
+	EntityManager entityManager;
 	@Override
 	public DiagnosticCenterBean addCenter(DiagnosticCenterBean center) {
 		
-		 em.persist(center);
+		entityManager.persist(center);
 		 
 		 return center;
 		 
@@ -30,21 +31,21 @@ public class HealthCareDaoImpl implements IHealthCareDao {
 	@Override
 	public DiagnosticCenterBean getCenter(int center_id) {
 		
-		return em.find(DiagnosticCenterBean.class, center_id);
+		return entityManager.find(DiagnosticCenterBean.class, center_id);
 	}
 
 	@Override
 	public List<DiagnosticCenterBean> displaycenter() {
 		
-			TypedQuery<DiagnosticCenterBean> query = em.createQuery("from DiagnosticCenterBean", DiagnosticCenterBean.class);
+			TypedQuery<DiagnosticCenterBean> query = entityManager.createQuery("from DiagnosticCenterBean", DiagnosticCenterBean.class);
 			return query.getResultList();
 	}
 
 	@Override
 	public DiagnosticCenterBean deleteCenter(int center_id) {
 		
-		DiagnosticCenterBean center = em.find(DiagnosticCenterBean.class, center_id);
-		em.remove(center);
+		DiagnosticCenterBean center = entityManager.find(DiagnosticCenterBean.class, center_id);
+		entityManager.remove(center);
 		 
 		
 		return center;
