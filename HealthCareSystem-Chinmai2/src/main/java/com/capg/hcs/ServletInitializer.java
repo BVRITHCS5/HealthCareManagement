@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-package com.capg.hcs;
-
-public class ServletInitializer {
-
-}
-=======
 package com.capg.hcs;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -14,8 +7,7 @@ public class ServletInitializer extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(HealthCareSystemSriCharanApplication.class);
+		return application.sources(HealthCareSystemChinmaiApplication.class);
 	}
 
 }
->>>>>>> branch 'master' of https://github.com/BVRITHCS5/HealthCareManagement.git
